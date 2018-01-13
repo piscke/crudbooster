@@ -851,7 +851,9 @@ class CBController extends Controller
                     $column_data[$fk] = $id;
                     foreach ($columns as $col) {
                         $colname = $col['name'];
-                        $column_data[$colname] = request($name.'-'.$colname)[$i];
+						$childvalue = Request::get($name.'-'.$colname)[$i];
+						if ($childvalue)
+							$column_data[$colname] = $childvalue;
                     }
                     $child_array[] = $column_data;
 
